@@ -20,6 +20,8 @@ playAgain.addEventListener('click', function() {
     $('.result-display').addClass('hidden');
     $('#playerChoiceHolder>div').remove();
     $('#compChoiceHolder>div').remove();
+    $('#compChoiceHolder').css('background-color', 'rgba(0, 0, 0, .5)');
+    console.log( $('#compChoiceHolder').css('background-color'));
     userOption = '';
     userOptionIn = 0;
     comp = 0;
@@ -39,19 +41,19 @@ $('#playerChoiceHolder').append(playerChoice);
     $('#result').removeClass('hidden');
     if((userOptionIn - 1) == comp||(userOptionIn + 2) == comp) {
          console.log('win');
-        $('#result>h3').text('You Win');
+        $('#result>.result').text('You Win');
         scoreCount++;
         score.text(scoreCount);
         }
     else if((userOptionIn) == comp) {
         console.log('draw');
-        $('#result>h3').text('DRAW');
+        $('#result>.result').text('DRAW');
         scoreCount=scoreCount;
         score.text(scoreCount);
         }
     else {
         console.log('loss')
-        $('#result>h3').text('You Lose');
+        $('#result>.result').text('You Lose');
         if(scoreCount!==0) {
             scoreCount--;
         }
@@ -67,6 +69,7 @@ function computerOption() {
     var index =Math.floor(Math.random() *3);
     var compChoice = $('#'+roles[index]).clone();
     $('#compChoiceHolder').append(compChoice);
+    $('#compChoiceHolder').css('background-color', 'transparent');
     console.log(index);
     return index;
 }
